@@ -2,17 +2,19 @@
 
 namespace Prophetz\Vk;
 
-use Prophetz\AntigateBundle\Service\Antigate;
-use Curl\Curl;
-use Symfony\Bridge\Doctrine\RegistryInterface;
-use Symfony\Component\DependencyInjection\ContainerInterface;
+use Prophetz\Anticaptcha\Anticaptcha;
+use Prophetz\Anticaptcha\Client\AnticaptchaClient;
+use Prophetz\Curl\Curl;
 
 class Vk
 {
-    private $container;
+    /** @var Curl  */
     private $curl;
+    /** @var Anticaptcha  */
     private $anticaptcha;
-    private $doctrine;
+    /** @var AnticaptchaClient  */
+    private $anticaptchaClient;
+
     private $requestNumber = 0;
 
     const CAPTCHA_ERROR = 1;
@@ -22,81 +24,18 @@ class Vk
     const VALIDATION_REQUIRED_ERROR = 5;
 
     /**
-     * Инициализация сервиса
-     * @param ContainerInterface $container
      * @param Curl $curl
-     * @param Antigate $anticaptcha
-     * @param RegistryInterface $doctrine
+     * @param Anticaptcha $anticaptcha
+     * @param AnticaptchaClient $anticaptchaClient
+     * @param $em
      */
-    public function __construct(Curl $curl, Antigate $anticaptcha, $em)
-    {
-        $this->setCurl($curl);
-        $this->setAnticaptcha($anticaptcha);
-    }
-
-    /**
-     * @param $container ContainerInterface
-     */
-    public function setContainer($container)
-    {
-        $this->container = $container;
-    }
-
-    /**
-     * @return ContainerInterface
-     */
-    public function getContainer()
-    {
-        return $this->container;
-    }
-
-    /**
-     * @param Curl $curl
-     */
-    public function setCurl($curl)
+    public function __construct(Curl $curl, Anticaptcha $anticaptcha, AnticaptchaClient $anticaptchaClient)
     {
         $this->curl = $curl;
-    }
-
-    /**
-     * @return Curl
-     */
-    public function getCurl()
-    {
-        return $this->curl;
-    }
-
-    /**
-     * @param Antigate $anticaptcha
-     */
-    public function setAnticaptcha($anticaptcha)
-    {
         $this->anticaptcha = $anticaptcha;
+        $this->anticaptchaClient = $anticaptchaClient;
     }
 
-    /**
-     * @return Antigate
-     */
-    public function getAnticaptcha()
-    {
-        return $this->anticaptcha;
-    }
-
-    /**
-     * @param RegistryInterface $doctrine
-     */
-    public function setDoctrine($doctrine)
-    {
-        $this->doctrine = $doctrine;
-    }
-
-    /**
-     * @return RegistryInterface
-     */
-    public function getDoctrine()
-    {
-        return $this->doctrine;
-    }
 
     public function getStatus($token)
     {

@@ -1,0 +1,97 @@
+{
+    "_readme": [
+        "This file locks the dependencies of your project to a known state",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "This file is @generated automatically"
+    ],
+    "hash": "6ead9968b8fe4714beaad094a620f248",
+    "content-hash": "419b09962be9710262136ba91dff7e79",
+    "packages": [
+        {
+            "name": "prophetz/anticaptcha",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/prophetz/anticaptcha.git",
+                "reference": "ae4da7195d07aeecfcfe92c6c29c4c334afc7fdc"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/prophetz/anticaptcha/zipball/ae4da7195d07aeecfcfe92c6c29c4c334afc7fdc",
+                "reference": "ae4da7195d07aeecfcfe92c6c29c4c334afc7fdc",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.4",
+                "prophetz/curl": "dev-master"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Prophetz\\Anticaptcha\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Alexander Kovalevich",
+                    "email": "kpuzuc@gmail.com"
+                }
+            ],
+            "description": "Anticaptcha library",
+            "time": "2015-09-20 04:14:01"
+        },
+        {
+            "name": "prophetz/curl",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/prophetz/curl.git",
+                "reference": "d8f913c8d646c57c21d6868d4264e3023ec6a136"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/prophetz/curl/zipball/d8f913c8d646c57c21d6868d4264e3023ec6a136",
+                "reference": "d8f913c8d646c57c21d6868d4264e3023ec6a136",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.4"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Prophetz\\Curl\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Alexander Kovalevich",
+                    "email": "kpuzuc@gmail.com"
+                }
+            ],
+            "description": "CURL library",
+            "time": "2015-09-20 03:49:08"
+        }
+    ],
+    "packages-dev": [],
+    "aliases": [],
+    "minimum-stability": "stable",
+    "stability-flags": {
+        "prophetz/anticaptcha": 20,
+        "prophetz/curl": 20
+    },
+    "prefer-stable": false,
+    "prefer-lowest": false,
+    "platform": {
+        "php": ">=5.4"
+    },
+    "platform-dev": []
+}
