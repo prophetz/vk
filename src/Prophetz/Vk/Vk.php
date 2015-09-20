@@ -3,7 +3,6 @@
 namespace Prophetz\Vk;
 
 use Prophetz\Anticaptcha\Anticaptcha;
-use Prophetz\Anticaptcha\Client\AnticaptchaClient;
 use Prophetz\Curl\Curl;
 
 class Vk
@@ -12,8 +11,6 @@ class Vk
     private $curl;
     /** @var Anticaptcha  */
     private $anticaptcha;
-    /** @var AnticaptchaClient  */
-    private $anticaptchaClient;
 
     private $requestNumber = 0;
 
@@ -26,14 +23,11 @@ class Vk
     /**
      * @param Curl $curl
      * @param Anticaptcha $anticaptcha
-     * @param AnticaptchaClient $anticaptchaClient
-     * @param $em
      */
-    public function __construct(Curl $curl, Anticaptcha $anticaptcha, AnticaptchaClient $anticaptchaClient)
+    public function __construct(Curl $curl, Anticaptcha $anticaptcha)
     {
         $this->curl = $curl;
         $this->anticaptcha = $anticaptcha;
-        $this->anticaptchaClient = $anticaptchaClient;
     }
 
 
@@ -210,7 +204,7 @@ class Vk
         //var_dump("Отсылаемые параметры:\n");
         //($params);
 
-        $response = $this->getCurl()->init($url)->setPostFields($params)->exec()->getData();
+        $response = $this->curl->init($url)->setPostFields($params)->exec()->getData();
         $response = json_decode($response, true);
 
         // if connection error - continue
@@ -234,7 +228,7 @@ class Vk
             switch ($check['error']) {
                 case $this::CAPTCHA_ERROR:
                     // получаем текст капчи
-                    $captchaText = $this->getAnticaptcha()->captcha($response['error']['captcha_img']);
+                    $captchaText = $this->anticaptcha->decode($response['error']['captcha_img']);
                     $captcha = array('captcha_key' => $captchaText, 'captcha_sid' => $response['error']['captcha_sid']);
                     echo "Текст капчи: $captchaText\n";
                     // отправляем повторный запрос
