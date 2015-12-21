@@ -16,8 +16,9 @@ class Vk
     /**
      * @param Curl $curl
      * @param Anticaptcha $anticaptcha
+     * @param null $token
      */
-    public function __construct(Curl $curl, Anticaptcha $anticaptcha, $token)
+    public function __construct(Curl $curl, Anticaptcha $anticaptcha, $token = null)
     {
         $client = new Client($curl, $anticaptcha, $token);
         $this->client = $client;
