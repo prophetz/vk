@@ -39,7 +39,6 @@ class Client
         $url = $this->createRequestUrl($method);
 
         $response = $this->curl->init($url)->setPostFields($params)->exec()->getData();
-        $response = json_decode($response, true);
 
         // if connection error - continue
         if (!is_array($response)) {
