@@ -4,9 +4,9 @@ namespace Prophetz\Vk\Exception;
 
 class UnknownFieldResponse extends \Exception
 {
-    private $message = 'Unknown field in response: ';
-    private $code;
-    private $previous;
+    protected $message = 'Unknown field in response: ';
+    protected $code;
+    protected $previous;
 
     public function __construct($field)
     {

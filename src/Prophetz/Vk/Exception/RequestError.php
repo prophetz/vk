@@ -4,6 +4,6 @@ namespace Prophetz\Vk\Exception;
 
 class RequestError extends \Exception
 {
-    private $message = 'Vk send request exception';
+    protected $message = 'Vk send request exception';
 
 }
