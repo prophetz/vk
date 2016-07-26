@@ -5,6 +5,7 @@ namespace Prophetz\Vk;
 use Prophetz\Anticaptcha\Anticaptcha;
 use Prophetz\Curl\Curl;
 use Prophetz\Vk\Exception\RequestError;
+use Prophetz\Vk\Exception\UnknownFieldResponse;
 
 class Client
 {
@@ -14,6 +15,8 @@ class Client
     private $anticaptcha;
     /** @var array */
     private $lastQuery;
+    /** @var array */
+    private $response;
 
     const CAPTCHA_ERROR = 1;
     const TOKEN_ERROR = 2;
@@ -41,7 +44,7 @@ class Client
     {
         $this->setLastQuery(array(
             'method' => $method,
-            'params' => $params
+            'params' => $params,
         ));
 
         $url = $this->createRequestUrl($method);
@@ -56,9 +59,11 @@ class Client
         $check = $this->checkResponse($response);
 
         if ($check['success'] == true) {
-            //echo "Возвращаем: \n";
+
             $this->requestNumber = 0;
-            return $response['response'];
+            $this->response = $response['response'];
+
+            return $this;
         } else {
             switch ($check['error']) {
                 case $this::CAPTCHA_ERROR:
@@ -156,6 +161,21 @@ class Client
 
         return $url;
     }
+
+    public function getResponse()
+    {
+        return $this->response;
+    }
+
+    public function getResponseField($field)
+    {
+        if (!isset($this->response[$field])) {
+            throw new UnknownFieldResponse($field);
+        }
+
+        return $this->response[$field];
+    }
+
 
     /**
      * @return string
