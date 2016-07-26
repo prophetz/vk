@@ -4,6 +4,7 @@ namespace Prophetz\Vk;
 
 use Prophetz\Anticaptcha\Anticaptcha;
 use Prophetz\Curl\Curl;
+use Prophetz\Vk\Exception\RequestError;
 
 class Client
 {
@@ -40,9 +41,9 @@ class Client
 
         $response = $this->curl->init($url)->setPostFields($params)->exec()->getData();
 
-        // if connection error - continue
         if (!is_array($response)) {
-            return false;
+
+            throw new RequestError();
         }
 
         //echo "Ответ:\n";
