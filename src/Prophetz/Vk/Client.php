@@ -37,7 +37,7 @@ class Client
     /**
      * @param $method
      * @param $params
-     * @return bool|null
+     * @return Client
      * @throws \Exception
      */
     public function send($method, $params)
