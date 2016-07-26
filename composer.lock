@@ -13,12 +13,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/prophetz/anticaptcha.git",
-                "reference": "ae4da7195d07aeecfcfe92c6c29c4c334afc7fdc"
+                "reference": "583350c87cd2d085e1d243645fa7765742fe2919"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/prophetz/anticaptcha/zipball/ae4da7195d07aeecfcfe92c6c29c4c334afc7fdc",
-                "reference": "ae4da7195d07aeecfcfe92c6c29c4c334afc7fdc",
+                "url": "https://api.github.com/repos/prophetz/anticaptcha/zipball/583350c87cd2d085e1d243645fa7765742fe2919",
+                "reference": "583350c87cd2d085e1d243645fa7765742fe2919",
                 "shasum": ""
             },
             "require": {
@@ -42,7 +42,7 @@
                 }
             ],
             "description": "Anticaptcha library",
-            "time": "2015-09-20 04:14:01"
+            "time": "2015-12-21 01:54:55"
         },
         {
             "name": "prophetz/curl",
@@ -50,12 +50,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/prophetz/curl.git",
-                "reference": "d8f913c8d646c57c21d6868d4264e3023ec6a136"
+                "reference": "6836f1d02863044ea208e23414b20c3b38b3c048"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/prophetz/curl/zipball/d8f913c8d646c57c21d6868d4264e3023ec6a136",
-                "reference": "d8f913c8d646c57c21d6868d4264e3023ec6a136",
+                "url": "https://api.github.com/repos/prophetz/curl/zipball/6836f1d02863044ea208e23414b20c3b38b3c048",
+                "reference": "6836f1d02863044ea208e23414b20c3b38b3c048",
                 "shasum": ""
             },
             "require": {
@@ -78,7 +78,7 @@
                 }
             ],
             "description": "CURL library",
-            "time": "2015-09-20 03:49:08"
+            "time": "2015-12-21 14:38:00"
         }
     ],
     "packages-dev": [],

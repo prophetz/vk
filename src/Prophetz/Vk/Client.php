@@ -12,6 +12,8 @@ class Client
     private $curl;
     /** @var Anticaptcha  */
     private $anticaptcha;
+    /** @var array */
+    private $lastQuery;
 
     const CAPTCHA_ERROR = 1;
     const TOKEN_ERROR = 2;
@@ -37,6 +39,11 @@ class Client
      */
     public function send($method, $params)
     {
+        $this->setLastQuery(array(
+            'method' => $method,
+            'params' => $params
+        ));
+
         $url = $this->createRequestUrl($method);
 
         $response = $this->curl->init($url)->setPostFields($params)->exec()->getData();
@@ -46,13 +53,7 @@ class Client
             throw new RequestError();
         }
 
-        //echo "Ответ:\n";
-        //var_dump($response);
-
         $check = $this->checkResponse($response);
-
-        //echo "Результат проверки:\n";
-        //var_dump($check);
 
         if ($check['success'] == true) {
             //echo "Возвращаем: \n";
@@ -188,5 +189,19 @@ class Client
         $this->token = $token;
     }
 
+    /**
+     * @return array
+     */
+    public function getLastQuery()
+    {
+        return $this->lastQuery;
+    }
 
+    /**
+     * @param array $lastQuery
+     */
+    public function setLastQuery($lastQuery)
+    {
+        $this->lastQuery = $lastQuery;
+    }
 }
