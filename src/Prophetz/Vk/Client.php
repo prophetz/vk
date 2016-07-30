@@ -9,6 +9,12 @@ use Prophetz\Vk\Exception\UnknownFieldResponse;
 
 class Client
 {
+    const CAPTCHA_ERROR = 1;
+    const TOKEN_ERROR = 2;
+    const UNKNOWN_ERROR = 3;
+    const HTTP_AUTH_ERROR = 4;
+    const VALIDATION_REQUIRED_ERROR = 5;
+
     /** @var Curl  */
     private $curl;
     /** @var Anticaptcha  */
@@ -18,14 +24,8 @@ class Client
     /** @var array */
     private $response;
     /** @var string */
-    private $language;
-
-    const CAPTCHA_ERROR = 1;
-    const TOKEN_ERROR = 2;
-    const UNKNOWN_ERROR = 3;
-    const HTTP_AUTH_ERROR = 4;
-    const VALIDATION_REQUIRED_ERROR = 5;
-
+    private $language = 'ru';
+    /** @var string */
     private $apiVersion = '5.25';
     private $token;
 
