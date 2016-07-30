@@ -17,6 +17,8 @@ class Client
     private $lastQuery;
     /** @var array */
     private $response;
+    /** @var string */
+    private $language;
 
     const CAPTCHA_ERROR = 1;
     const TOKEN_ERROR = 2;
@@ -157,6 +159,7 @@ class Client
             $urlParams[] = 'access_token='.$this->token;
         }
         $urlParams[] = "v=".$this->apiVersion;
+        $urlParams[] = "lang=".$this->language;
         $url = $url.'?'.implode('&', $urlParams);
 
         return $url;
@@ -223,5 +226,13 @@ class Client
     public function setLastQuery($lastQuery)
     {
         $this->lastQuery = $lastQuery;
+    }
+
+    /**
+     * @param string $language
+     */
+    public function setLanguage($language)
+    {
+        $this->language = $language;
     }
 }
